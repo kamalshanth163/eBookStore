@@ -27,6 +27,8 @@ namespace eBookStore
         {
             services.AddControllersWithViews();
 
+            services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(1); });
+
             services.AddDbContext<eBookStoreContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("eBookStoreContext")));
         }
@@ -51,11 +53,13 @@ namespace eBookStore
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Users}/{action=Login}/{id?}");
             });
         }
     }

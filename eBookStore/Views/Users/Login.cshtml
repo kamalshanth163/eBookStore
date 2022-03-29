@@ -1,0 +1,17 @@
+﻿<h2>login</h2>
+<form asp-action="Login">
+    <div class="form-group">
+        <label class="control-label"> User Name</label>
+        <input name="name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="pass" class="control-label"> User Password</label>
+        <input name="pass" type="password" class="form-control" /> <br />
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary" />
+
+    <p style="color:red"> @ViewData["message"]</p>
+</form>
+<a asp-action="Create">Create Account</a>
+
+
