@@ -62,7 +62,7 @@ namespace eBookStore.Controllers
         {
             SqlConnection conn1 = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
             string sql;
-            sql = "SELECT * FROM usersaccounts where name ='" + name + "' and  pass ='" + pass + "' ";
+            sql = "SELECT * FROM Users where Name ='" + name + "' and  Pass ='" + pass + "' ";
             SqlCommand comm = new SqlCommand(sql, conn1);
             conn1.Open();
             SqlDataReader reader = comm.ExecuteReader();
