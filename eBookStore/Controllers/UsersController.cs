@@ -96,9 +96,8 @@ namespace eBookStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Pass,Email")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Name,Role,Pass,Email")] User user)
         {
-            user.Role = "customer";
             _context.Add(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Login));
