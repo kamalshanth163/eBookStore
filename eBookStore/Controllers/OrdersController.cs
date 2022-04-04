@@ -94,7 +94,9 @@ namespace eBookStore.Controllers
 
         public async Task<IActionResult> CustomerReport()
         {
-            var orderItems = await _context.Reports.FromSqlRaw("select Users.Id as Id, Name as Customername, Sum (Quantity * Price) as Total from Books, Orders,Users where Users.Id = Orders.UserId  and BookId = Books.Id group by Name,Users.Id ").ToListAsync();
+            //var orderItems = await _context.Reports.FromSqlRaw("select Users.Id as Id, Name as Customername, Sum (Quantity * Price) as Total from Books, Orders,Users where Users.Id = Orders.UserId  and BookId = Books.Id group by Name,Users.Id ").ToListAsync();
+            var orderItems = await _context.Reports.FromSqlRaw("select Users.Id as Id, Name as Customername, Sum (Quantity * cast(replace(Price, '.','') as integer)) as Total from Books, Orders,Users where Users.Id = Orders.UserId  and BookId = Books.Id group by Name,Users.Id ").ToListAsync();
+
             return View(orderItems);
         }
 
