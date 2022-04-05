@@ -168,3 +168,4 @@ C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Books\Catalogue.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout1.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\MyOrders.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\AdminDashboard.cshtml.g.cs

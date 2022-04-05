@@ -1,0 +1,18 @@
+﻿@model eBookStore.Models.AdminDashboard
+
+@{
+    ViewData["Title"] = "AdminDashboard";
+}
+
+<h1>Admin Dashboard</h1><br />
+
+<div>
+    <h3>Books - @Model.TotalBooks</h3><br />
+    <h3>Customers - @Model.TotalCustomers</h3><br />
+    <h3>Admins - @Model.TotalAdmins</h3><br />
+    <h3>Orders - @Model.TotalOrders</h3><br />
+    <h3>Pending Orders - @Model.TotalPendingOrders</h3><br />
+    <h3>Completed Orders - @Model.TotalCompletedOrders</h3><br />
+</div>
+
+
