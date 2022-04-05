@@ -16,5 +16,6 @@ namespace eBookStore.Data
 
         public DbSet<Order> Orders { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<eBookStore.Models.AdminDashboard> AdminDashboard { get; set; }
     }
 }

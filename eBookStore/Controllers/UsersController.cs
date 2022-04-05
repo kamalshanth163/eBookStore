@@ -156,5 +156,21 @@ namespace eBookStore.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> AdminDashboard()
+        {
+            var dashboard = new AdminDashboard
+            {
+                Id = Convert.ToInt32(HttpContext.Session.GetString("userid")),
+                TotalBooks = _context.Books.Count(),
+                TotalAdmins = _context.Users.Where(u => u.Role == "admin").Count(),
+                TotalCustomers = _context.Users.Where(u => u.Role == "customer").Count(),
+                TotalOrders = _context.Orders.Count(),
+                TotalPendingOrders = _context.Orders.Where(u => u.Status == "pending").Count(),
+                TotalCompletedOrders = _context.Orders.Where(u => u.Status == "completed").Count(),
+            };
+
+            return View(dashboard);
+        }
     }
 }
