@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using eBookStore.Models;
 using Microsoft.EntityFrameworkCore;
-using eBookStore.Models;
 
 namespace eBookStore.Data
 {
@@ -19,5 +15,6 @@ namespace eBookStore.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Report> Reports { get; set; }
     }
 }

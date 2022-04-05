@@ -62,7 +62,7 @@ namespace eBookStore.Controllers
         {
             SqlConnection conn1 = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
             string sql;
-            sql = "SELECT * FROM usersaccounts where name ='" + name + "' and  pass ='" + pass + "' ";
+            sql = "SELECT * FROM Users where Name ='" + name + "' and  Pass ='" + pass + "' ";
             SqlCommand comm = new SqlCommand(sql, conn1);
             conn1.Open();
             SqlDataReader reader = comm.ExecuteReader();
@@ -96,9 +96,8 @@ namespace eBookStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Pass,Email")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Name,Role,Pass,Email")] User user)
         {
-            user.Role = "customer";
             _context.Add(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Login));

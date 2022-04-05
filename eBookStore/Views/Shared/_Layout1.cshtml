@@ -19,16 +19,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Create">Add Book</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Catalogue"> Catalogue</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Manage Books</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="MyOrders">My Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="CustomerReport">Order Reports</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Cutomers List</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">Edit My Info</a>
                         </li>
                     </ul>
                 </div>
@@ -52,3 +49,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+

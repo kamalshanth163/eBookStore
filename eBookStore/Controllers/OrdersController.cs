@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using eBookStore.Data;
 using eBookStore.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
 
 namespace eBookStore.Controllers
 {
@@ -65,18 +66,49 @@ namespace eBookStore.Controllers
             order.UserId = Convert.ToInt32(HttpContext.Session.GetString("userid"));
             order.Orderdate = DateTime.Today;
 
+            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
+            string sql;
+            sql = "UPDATE Books  SET Bookquantity  = Bookquantity   - '" + order.Quantity + "'  where (Id ='" + order.BookId + "' )";
+            SqlCommand comm = new SqlCommand(sql, conn);
+            conn.Open();
+            comm.ExecuteNonQuery();
+
+
             _context.Add(order);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(UserOrders));
+            return RedirectToAction(nameof(MyOrders));
         }
 
-        public async Task<IActionResult> UserOrders()
+        public async Task<IActionResult> SetOrderStatus(int id, string status)
+        {
+            var newStatus = status == "pending" ? "completed" : "pending";
+            var order = await _context.Orders.FindAsync(id);
+            order.Status = newStatus;
+
+            _context.Update(order);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(CustomerOrders), new { id = order.UserId });
+        }
+
+        public async Task<IActionResult> MyOrders()
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-            var orderItems = await _context.Orders.FromSqlRaw("select *  from orders where  userid = '" + id + "'  ").ToListAsync();
+            var orderItems = await _context.Orders.FromSqlRaw("select * from Orders where UserId = '" + id + "'  ").ToListAsync();
             return View(orderItems);
         }
 
+        public async Task<IActionResult> CustomerOrders(int? id)
+        {
+            var orderItems = await _context.Orders.FromSqlRaw("select * from Orders where UserId = '" + id + "'  ").ToListAsync();
+            return View(orderItems);
+        }
+
+        public async Task<IActionResult> CustomerReport()
+        {
+            var orderItems = await _context.Reports.FromSqlRaw("select Users.Id as Id, Name as Customername, Sum (Quantity * cast(replace(Price, '.','') as integer)) as Total from Books, Orders,Users where Users.Id = Orders.UserId  and BookId = Books.Id group by Name,Users.Id ").ToListAsync();
+            return View(orderItems);
+        }
 
         // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -163,3 +163,8 @@ C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Details.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Edit.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Index.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\CustomerReport.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\CustomerOrders.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Books\Catalogue.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout1.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\MyOrders.cshtml.g.cs

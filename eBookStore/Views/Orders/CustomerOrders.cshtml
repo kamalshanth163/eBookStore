@@ -1,0 +1,49 @@
+﻿@model IEnumerable<eBookStore.Models.Order>
+
+@{
+    ViewData["Title"] = "CustomerOrders";
+}
+
+<h1>CustomerOrders</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orderdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orderdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>@Html.ActionLink((item.Status == "pending" ? "Set as completed" : "Set as pending"), "SetOrderStatus", new { obj = item, id = item.Id, status = item.Status })</td>
+        </tr>
+}
+    </tbody>
+</table>

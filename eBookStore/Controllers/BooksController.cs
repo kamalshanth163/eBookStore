@@ -26,6 +26,10 @@ namespace eBookStore.Controllers
         {
             return View(await _context.Books.ToListAsync());
         }
+        public async Task<IActionResult> Catalogue()
+        {
+            return View(await _context.Books.ToListAsync());
+        }
 
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)

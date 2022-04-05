@@ -9,6 +9,7 @@ namespace eBookStore.Models
         public int UserId { get; set; }
         public int Quantity { get; set; }
         public DateTime Orderdate { get; set; }
+        public string Status { get; set; }
     }
 
 }
