@@ -79,6 +79,18 @@ namespace eBookStore.Controllers
             return RedirectToAction(nameof(MyOrders));
         }
 
+        public async Task<IActionResult> SetOrderStatus(int id, string status)
+        {
+            var newStatus = status == "pending" ? "completed" : "pending";
+            var order = await _context.Orders.FindAsync(id);
+            order.Status = newStatus;
+
+            _context.Update(order);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(CustomerOrders), new { id = order.UserId });
+        }
+
         public async Task<IActionResult> MyOrders()
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("userid"));
@@ -94,9 +106,7 @@ namespace eBookStore.Controllers
 
         public async Task<IActionResult> CustomerReport()
         {
-            //var orderItems = await _context.Reports.FromSqlRaw("select Users.Id as Id, Name as Customername, Sum (Quantity * Price) as Total from Books, Orders,Users where Users.Id = Orders.UserId  and BookId = Books.Id group by Name,Users.Id ").ToListAsync();
             var orderItems = await _context.Reports.FromSqlRaw("select Users.Id as Id, Name as Customername, Sum (Quantity * cast(replace(Price, '.','') as integer)) as Total from Books, Orders,Users where Users.Id = Orders.UserId  and BookId = Books.Id group by Name,Users.Id ").ToListAsync();
-
             return View(orderItems);
         }
 

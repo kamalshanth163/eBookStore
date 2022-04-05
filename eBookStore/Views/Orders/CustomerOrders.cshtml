@@ -21,7 +21,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Orderdate)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +39,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Orderdate)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>@Html.ActionLink((item.Status == "pending" ? "Set as completed" : "Set as pending"), "SetOrderStatus", new { obj = item, id = item.Id, status = item.Status })</td>
         </tr>
 }
     </tbody>
