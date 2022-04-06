@@ -7,25 +7,42 @@
 @{Layout = "~/Views/Shared/_Layout1.cshtml";}
 
 <h1>Catalogue</h1>
-
+<br />
+<div>
+    @using (Html.BeginForm("Catalogue", "Books", FormMethod.Get))
+    {
+        @Html.TextBox("searchTerm")<input type="submit" value="Search" /> @Html.ActionLink("View all", "Catalogue", new { searchTerm = "" })
+    }
+</div>
+<br />
 <div class="container-fluid">
     <div class="row">
-        @foreach (var item in Model)
+
+        @if(Model.Count() == 0)
         {
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        @item.Title
-                    </div>
-                    <div class="card-body">
-                        <img src="~/images/@item.Imgfile" height="150" /> <br />
-                        price:@item.Price
-                    </div>
-                    <div class="card-footer">
-                        <a asp-controller="orders" asp-action="Create" asp-route-id="@item.Id">Buy</a>
+            <div>
+                <p>No results found</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            @item.Title
+                        </div>
+                        <div class="card-body">
+                            <img src="~/images/@item.Imgfile" height="150" /> <br />
+                            price:@item.Price
+                        </div>
+                        <div class="card-footer">
+                            <a asp-controller="orders" asp-action="Create" asp-route-id="@item.Id">Buy</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+             }
         }
     </div>
 </div>

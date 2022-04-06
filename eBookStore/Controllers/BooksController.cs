@@ -26,9 +26,9 @@ namespace eBookStore.Controllers
         {
             return View(await _context.Books.ToListAsync());
         }
-        public async Task<IActionResult> Catalogue()
+        public async Task<IActionResult> Catalogue(string searchTerm)
         {
-            return View(await _context.Books.ToListAsync());
+            return View(_context.Books.Where(x => x.Title.Contains(searchTerm) || searchTerm == null || searchTerm == "").ToList());
         }
 
         // GET: Books/Details/5
