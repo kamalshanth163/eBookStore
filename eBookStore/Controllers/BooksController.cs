@@ -60,7 +60,7 @@ namespace eBookStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormFile file, [Bind("Id,Title,Info,Bookquantity,Price,Cataid,Author")] Book book)
+        public async Task<IActionResult> Create(IFormFile file, [Bind("Id,Title,Info,Bookquantity,Price,Category,Author")] Book book)
         {
             if (file != null)
             {
@@ -98,7 +98,7 @@ namespace eBookStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(IFormFile file, int id, [Bind("Id,Title,Info,Bookquantity,Price,Cataid,Author,Imgfile")] Book book)
+        public async Task<IActionResult> Edit(IFormFile file, int id, [Bind("Id,Title,Info,Bookquantity,Price,Category,Author,Imgfile")] Book book)
         {
             if (file != null)
             {
