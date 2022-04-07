@@ -49,6 +49,85 @@ namespace eBookStore.Controllers
             return View(book);
         }
 
+        public async Task<IActionResult> Feedbacks(int? bookId, int? userId)
+        {
+            var feedbacks = new List<Feedback>();
+
+            if(userId == 0)
+            {
+                feedbacks = _context.Feedbacks.Where(x => x.BookId == bookId).ToList();
+            }
+            else
+            {
+                feedbacks = _context.Feedbacks.Where(x => x.BookId == bookId && x.UserId == userId).ToList();
+            }
+
+            feedbacks = Enumerable.Reverse(feedbacks).ToList();
+
+            var feedbackDisplays = FeedbackDisplays(feedbacks);
+
+            HttpContext.Session.SetString("BookId", bookId.ToString());
+            return View(feedbackDisplays);
+        }
+
+        public List<FeedbackDisplay> FeedbackDisplays(List<Feedback> feedbacks)
+        {
+            var models = new List<FeedbackDisplay>();
+
+            foreach (var fb in feedbacks)
+            {
+                var model = new FeedbackDisplay
+                {
+                    Id = fb.Id,
+                    BookName = _context.Books.Find(fb.BookId) == null ? "" : _context.Books.Find(fb.BookId).Title,
+                    UserName = _context.Users.Find(fb.UserId) == null ? "" : _context.Users.Find(fb.UserId).Name,
+                    FeedbackText = fb.FeedbackText,
+                    Rating = fb.Rating,
+                    Imgfile = _context.Books.Find(fb.BookId) == null ? "" : _context.Books.Find(fb.BookId).Imgfile
+                };
+
+                models.Add(model);
+            }
+
+            return models;
+        }
+
+        public async Task<IActionResult> AllFeedbacks()
+        {
+            var bookId = Convert.ToInt32(HttpContext.Session.GetString("BookId"));
+            return RedirectToAction(nameof(Feedbacks), new { bookId = bookId, userId = 0 });
+        }
+
+        public async Task<IActionResult> MyFeedbacks()
+        {
+            var userId = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var bookId = Convert.ToInt32(HttpContext.Session.GetString("BookId"));
+            return RedirectToAction(nameof(Feedbacks), new { bookId = bookId, userId = userId });
+        }
+
+        public async Task<IActionResult> CreateFeedback(string feedbackText, decimal rating)
+        {
+            var userId = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var bookId = Convert.ToInt32(HttpContext.Session.GetString("BookId"));
+            rating = rating >= 0
+                        ? rating > 5.0m
+                            ? 5.0m : rating
+                        : 0;
+
+            var feedback = new Feedback
+            {
+                BookId = bookId,
+                UserId = userId,
+                FeedbackText = feedbackText,
+                Rating = rating
+            };
+
+            _context.Add(feedback);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Feedbacks), new { bookId = bookId, userId = 0 });
+        }
+
         // GET: Books/Create
         public IActionResult Create()
         {

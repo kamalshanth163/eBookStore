@@ -38,7 +38,10 @@
                             price:@item.Price
                         </div>
                         <div class="card-footer">
-                            <a asp-controller="orders" asp-action="Create" asp-route-id="@item.Id">Buy</a>
+                            <a asp-controller="orders" asp-action="Create" asp-route-id="@item.Id">Buy</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            @*<a asp-action="Feedbacks" asp-route-id="@item.Id">Feedback</a>*@
+                            @Html.ActionLink("Feedbacks", "Feedbacks", new { bookId = item.Id, userId = 0 })
                         </div>
                     </div>
                 </div>

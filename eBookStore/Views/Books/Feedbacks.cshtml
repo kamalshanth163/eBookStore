@@ -1,0 +1,56 @@
+﻿@model IEnumerable<eBookStore.Models.FeedbackDisplay>
+
+@{
+    ViewData["Title"] = "Feedbacks";
+}
+
+<h1>Feedbacks</h1>
+
+<div>
+    @if(Model.Any())
+    {
+        <h2>@Model.ToList()[0].BookName</h2><br />
+        <img src="~/images/@Model.ToList()[0].Imgfile" height="150" />
+    }
+</div>
+
+<br />
+<div>
+    @using (Html.BeginForm("CreateFeedback", "Books", FormMethod.Post))
+    {
+    <span>Feedback: @Html.TextBox("feedbackText")</span> <span>Rating: @Html.TextBox("rating")</span> <input type="submit" value="Submit" /> <span>@Html.ActionLink("View all", "AllFeedbacks") | @Html.ActionLink("My feedbacks", "MyFeedbacks")</span>
+    }
+</div>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FeedbackText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -174,3 +174,4 @@ C:\Users\DELL\Desktop\eBookStore\eBookStore\bin\Debug\netcoreapp3.1\DocumentForm
 C:\Users\DELL\Desktop\eBookStore\eBookStore\bin\Debug\netcoreapp3.1\ExcelNumberFormat.dll
 C:\Users\DELL\Desktop\eBookStore\eBookStore\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Reports\Index.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Books\Feedbacks.cshtml.g.cs
