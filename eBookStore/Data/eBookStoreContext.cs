@@ -11,11 +11,11 @@ namespace eBookStore.Data
         }
 
         public DbSet<Book> Books { get; set; }
-
         public DbSet<User> Users { get; set; }
-
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+
         public DbSet<Report> Reports { get; set; }
-        public DbSet<eBookStore.Models.AdminDashboard> AdminDashboard { get; set; }
+        public DbSet<AdminDashboard> AdminDashboard { get; set; }
     }
 }

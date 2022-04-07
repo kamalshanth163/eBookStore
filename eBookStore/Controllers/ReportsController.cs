@@ -37,6 +37,7 @@ namespace eBookStore.Controllers
                 worksheet.Cell(currentRow, 4).Value = "Bookquantity";
                 worksheet.Cell(currentRow, 5).Value = "Price";
                 worksheet.Cell(currentRow, 6).Value = "Author";
+                worksheet.Cell(currentRow, 7).Value = "Category";
                 #endregion
 
                 #region Body
@@ -49,6 +50,7 @@ namespace eBookStore.Controllers
                     worksheet.Cell(currentRow, 4).Value = book.Bookquantity;
                     worksheet.Cell(currentRow, 5).Value = book.Price;
                     worksheet.Cell(currentRow, 6).Value = book.Author;
+                    worksheet.Cell(currentRow, 7).Value = book.Category;
                 }
                 #endregion
 

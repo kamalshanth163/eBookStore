@@ -63,7 +63,7 @@ namespace eBookStore.Controllers
             order.BookId = bookId;
             order.Quantity = quantity;
 
-            order.UserId = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            order.UserId = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
             order.Orderdate = DateTime.Today;
 
             SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
@@ -93,7 +93,7 @@ namespace eBookStore.Controllers
 
         public async Task<IActionResult> MyOrders()
         {
-            int id = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
             var orderItems = await _context.Orders.FromSqlRaw("select * from Orders where UserId = '" + id + "'  ").ToListAsync();
             return View(orderItems);
         }

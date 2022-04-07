@@ -73,7 +73,7 @@ namespace eBookStore.Controllers
                 string id = Convert.ToString((int)reader["Id"]);
                 HttpContext.Session.SetString("Name", name);
                 HttpContext.Session.SetString("Role", role);
-                HttpContext.Session.SetString("userid", id);
+                HttpContext.Session.SetString("UserId", id);
                 reader.Close();
                 conn1.Close();
                 if (role == "customer")
@@ -106,7 +106,7 @@ namespace eBookStore.Controllers
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit()
         {
-            int id = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
             var user = await _context.Users.FindAsync(id);
             return View(user);
         }
@@ -161,7 +161,7 @@ namespace eBookStore.Controllers
         {
             var dashboard = new AdminDashboard
             {
-                Id = Convert.ToInt32(HttpContext.Session.GetString("userid")),
+                Id = Convert.ToInt32(HttpContext.Session.GetString("UserId")),
                 TotalBooks = _context.Books.Count(),
                 TotalAdmins = _context.Users.Where(u => u.Role == "admin").Count(),
                 TotalCustomers = _context.Users.Where(u => u.Role == "customer").Count(),
