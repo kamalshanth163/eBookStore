@@ -1,6 +1,8 @@
 ﻿using ClosedXML.Excel;
 using eBookStore.Data;
+using eBookStore.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -155,6 +157,67 @@ namespace eBookStore.Controllers
                         "Orders.xlsx"
                     );
                 }
+            }
+        }
+
+        public async Task<IActionResult> GenerateFeedbackReport()
+        {
+            var feedbacks = _context.Feedbacks.ToList();
+
+            var models = new List<FeedbackDisplay>();
+
+            foreach (var fb in feedbacks)
+            {
+                var model = new FeedbackDisplay
+                {
+                    Id = fb.Id,
+                    BookName = _context.Books.Find(fb.BookId) == null ? "" : _context.Books.Find(fb.BookId).Title,
+                    UserName = _context.Users.Find(fb.UserId) == null ? "" : _context.Users.Find(fb.UserId).Name,
+                    FeedbackText = fb.FeedbackText,
+                    Rating = fb.Rating,
+                    Imgfile = _context.Books.Find(fb.BookId) == null ? "" : _context.Books.Find(fb.BookId).Imgfile
+                };
+
+                models.Add(model);
+            }
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Feedbacks");
+                var currentRow = 1;
+
+                #region Header
+                worksheet.Cell(currentRow, 1).Value = "Id";
+                worksheet.Cell(currentRow, 2).Value = "BookName";
+                worksheet.Cell(currentRow, 3).Value = "UserName";
+                worksheet.Cell(currentRow, 4).Value = "FeedbackText";
+                worksheet.Cell(currentRow, 5).Value = "Rating";
+                #endregion
+
+                #region Body
+                foreach (var feedback in models)
+                {
+                    currentRow++;
+                    worksheet.Cell(currentRow, 1).Value = feedback.Id;
+                    worksheet.Cell(currentRow, 2).Value = feedback.BookName;
+                    worksheet.Cell(currentRow, 3).Value = feedback.UserName;
+                    worksheet.Cell(currentRow, 4).Value = feedback.FeedbackText;
+                    worksheet.Cell(currentRow, 5).Value = feedback.Rating;
+                }
+                #endregion
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+
+                    return File(
+                        content,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "Feedbacks.xlsx"
+                    );
+                }
+
             }
         }
     }
