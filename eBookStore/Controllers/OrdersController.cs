@@ -62,9 +62,9 @@ namespace eBookStore.Controllers
             Order order = new Order();
             order.BookId = bookId;
             order.Quantity = quantity;
-
             order.UserId = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
             order.Orderdate = DateTime.Today;
+            order.Status = "pending";
 
             SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
             string sql;

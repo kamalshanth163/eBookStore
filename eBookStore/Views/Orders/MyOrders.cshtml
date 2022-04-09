@@ -4,7 +4,7 @@
     ViewData["Title"] = "MyOrders";
 }
 
-@{Layout = "~/Views/Shared/_Layout1.cshtml";}
+@{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
 
 <h1>MyOrders</h1>
 
@@ -23,7 +23,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th></th>
+            @*<th></th>*@
         </tr>
     </thead>
     <tbody>
@@ -42,11 +42,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
+            @*<td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            </td>*@
         </tr>
         }
     </tbody>

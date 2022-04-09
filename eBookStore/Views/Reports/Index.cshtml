@@ -3,6 +3,8 @@
     ViewData["Title"] = "GenerateReports";
 }
 
+@{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
+
 <h1>Generate Reports</h1>
 
 <h2>
@@ -13,4 +15,7 @@
 </h2>
 <h2>
     @Html.ActionLink("Generate Order Report", "GenerateOrderReport", "Reports")
+</h2>
+<h2>
+    @Html.ActionLink("Generate Feedback Report", "GenerateFeedbackReport", "Reports")
 </h2>

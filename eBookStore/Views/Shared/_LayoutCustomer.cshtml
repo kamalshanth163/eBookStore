@@ -19,10 +19,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Books</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Catalogue"> Books</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login"> Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="MyOrders">My Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">Edit My Info</a>
+                        </li>
+                        <li class="nav-item justify-content-end">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
                         </li>
                     </ul>
                 </div>

@@ -4,6 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
+@{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
+
 <h1>Create</h1>
 <hr />
 <dl class="row">
@@ -49,9 +51,9 @@
         Picture
     </dt>
     <dd>
-    <br />
-    <img src="~/images/@Model.Imgfile" height="150" />
-    <br />@Model.Imgfile
+        <br />
+        <img src="~/images/@Model.Imgfile" height="150" />
+        <br />@Model.Imgfile
 
     </dd>
 </dl>
@@ -76,6 +78,6 @@
 </div>
 
 <div>
-    <a asp-controller="Books" asp-action="catalogue">Back to Catalogue</a>
+    <a asp-controller="Books" asp-action="catalogue">Back to Books</a>
 </div>
 

@@ -4,7 +4,10 @@
     ViewData["Title"] = "AdminDashboard";
 }
 
-<h1>Admin Dashboard</h1><br />
+@{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
+
+<h1>Admin Dashboard</h1>
+<br />
 
 <div>
     <h3>Books - @Model.TotalBooks</h3><br />

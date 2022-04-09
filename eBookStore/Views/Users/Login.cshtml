@@ -6,7 +6,7 @@
 
 </head>
 
-@{Layout = null;}
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
 
 <h2>login</h2>
 <form asp-action="Login">
@@ -22,6 +22,9 @@
 
     <p style="color:red"> @ViewData["message"]</p>
 </form>
-<a asp-action="Create">Create Account</a>
+
+<div>
+    Don't' have an account? <a asp-action="Create">Register</a>
+</div>
 
 
