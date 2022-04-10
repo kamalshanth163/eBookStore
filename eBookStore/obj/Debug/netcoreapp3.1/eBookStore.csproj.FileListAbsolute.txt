@@ -156,7 +156,6 @@ C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
-C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Create.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Delete.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Details.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Edit.cshtml.g.cs
@@ -176,3 +175,5 @@ C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutCustomer.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Cart.cshtml.g.cs
+C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Create.cshtml.g.cs

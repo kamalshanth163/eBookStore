@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using eBookStore.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace eBookStore
 {
@@ -31,6 +32,8 @@ namespace eBookStore
 
             services.AddDbContext<eBookStoreContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("eBookStoreContext")));
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

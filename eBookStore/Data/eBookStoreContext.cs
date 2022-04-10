@@ -17,5 +17,6 @@ namespace eBookStore.Data
 
         public DbSet<Report> Reports { get; set; }
         public DbSet<AdminDashboard> AdminDashboard { get; set; }
+        public DbSet<eBookStore.Models.CartItem> CartItem { get; set; }
     }
 }
