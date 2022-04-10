@@ -91,13 +91,11 @@ namespace eBookStore.Controllers
                 order.Orderdate = DateTime.Today;
                 order.Status = "pending";
 
-                SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
-                string sql;
-                sql = "UPDATE Books  SET Bookquantity  = Bookquantity   - '" + order.Quantity + "'  where (Id ='" + order.BookId + "' )";
-                SqlCommand comm = new SqlCommand(sql, conn);
-                conn.Open();
-                comm.ExecuteNonQuery();
-                _context.Add(order);  
+                var book = await _context.Books.FindAsync(order.BookId);
+                book.Bookquantity = book.Bookquantity - order.Quantity;
+                _context.Update(book);
+                _context.Add(order);
+                
             }
 
             await _context.SaveChangesAsync();

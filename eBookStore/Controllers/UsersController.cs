@@ -61,25 +61,16 @@ namespace eBookStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string name, string pass)
         {
-            SqlConnection conn1 = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string sql;
-            sql = "SELECT * FROM Users where Name ='" + name + "' and  Pass ='" + pass + "' ";
-            SqlCommand comm = new SqlCommand(sql, conn1);
-            conn1.Open();
-            SqlDataReader reader = comm.ExecuteReader();
+            var user = _context.Users.FirstOrDefault(x => x.Name == name && x.Pass == pass);
 
-            if (reader.Read())
+            if (user != null)
             {
-                string role = (string)reader["role"];
-                string id = Convert.ToString((int)reader["Id"]);
-                HttpContext.Session.SetString("Name", name);
-                HttpContext.Session.SetString("Role", role);
-                HttpContext.Session.SetString("UserId", id);
+                HttpContext.Session.SetString("Name", user.Name);
+                HttpContext.Session.SetString("Role", user.Role);
+                HttpContext.Session.SetString("UserId", user.Id.ToString());
                 HttpContext.Session.SetComplexData("CartItems", new List<CartItem>());
 
-                reader.Close();
-                conn1.Close();
-                if (role == "customer")
+                if (user.Role == "customer")
                     return RedirectToAction("catalogue", "books");
                 else
                     return RedirectToAction("Index", "books");
