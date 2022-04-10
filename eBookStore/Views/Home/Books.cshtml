@@ -1,0 +1,51 @@
+﻿@model IEnumerable<eBookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Books Page";
+}
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+
+<h1>Books</h1>
+<br />
+<div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("searchTerm")<input type="submit" value="Search" /> @Html.ActionLink("View all", "Index", new { searchTerm = "" })
+    }
+</div>
+<br />
+<div class="container-fluid">
+    <div class="row">
+
+        @if (Model.Count() == 0)
+        {
+            <div>
+                <p>No results found</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            @item.Title
+                        </div>
+                        <div class="card-body">
+                            <img src="~/images/@item.Imgfile" height="150" /> <br />
+                            price:@item.Price
+                        </div>
+                        <div class="card-footer">
+                            <a asp-controller="Users" asp-action="Login" asp-route-id="@item.Id">Add to cart</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-controller="Users" asp-action="Login" asp-route-id="@item.Id">Feedbacks</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

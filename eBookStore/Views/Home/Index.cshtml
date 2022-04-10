@@ -7,14 +7,7 @@
 @{Layout = "~/Views/Shared/_Layout.cshtml";}
 
 
-<h1>Books</h1>
-<br />
-<div>
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-    {
-        @Html.TextBox("searchTerm")<input type="submit" value="Search" /> @Html.ActionLink("View all", "Index", new { searchTerm = "" })
-    }
-</div>
+<h1>Home</h1>
 <br />
 <div class="container-fluid">
     <div class="row">
