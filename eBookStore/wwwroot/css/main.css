@@ -75,6 +75,10 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+* a {
+    text-decoration:none !important;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -15576,6 +15580,11 @@ input[type="number"] {
   text-align: center; }
   .product-card .product-header {
     padding: 0 15px; }
+
+    .product-card .product-header h3 a {
+        color:black;
+    }
+
   .product-card .author {
     font-size: 14px;
     font-weight: 400;
@@ -16731,14 +16740,16 @@ input[type="number"] {
 
 /*############### Desktop Menu ################*/
 @media (min-width: 992px) {
-  ul.main-menu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: relative;
-    -webkit-transition: .4s;
-    -o-transition: .4s;
-    transition: .4s; }
+    ul.main-menu {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+        -webkit-transition: .4s;
+        -o-transition: .4s;
+        transition: .4s;
+        margin-bottom: 0px !important;
+    }
     ul.main-menu > li.menu-item > a {
       margin-left: 10px;
       margin-right: 10px;
