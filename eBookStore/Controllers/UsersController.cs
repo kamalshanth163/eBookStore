@@ -9,6 +9,7 @@ using eBookStore.Data;
 using eBookStore.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Http;
+using eBookStore.Common;
 
 namespace eBookStore.Controllers
 {
@@ -74,14 +75,14 @@ namespace eBookStore.Controllers
                 HttpContext.Session.SetString("Name", name);
                 HttpContext.Session.SetString("Role", role);
                 HttpContext.Session.SetString("UserId", id);
+                HttpContext.Session.SetComplexData("CartItems", new List<CartItem>());
+
                 reader.Close();
                 conn1.Close();
                 if (role == "customer")
                     return RedirectToAction("catalogue", "books");
-
                 else
                     return RedirectToAction("Index", "books");
-
             }
             else
             {

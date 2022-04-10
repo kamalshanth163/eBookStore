@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-@{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
+@{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
 
 <h1>Details</h1>
 
@@ -57,8 +57,4 @@
         <img src="~/images/@Model.Imgfile" height="150" />
         <input type="hidden" asp-for="Imgfile" />
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>

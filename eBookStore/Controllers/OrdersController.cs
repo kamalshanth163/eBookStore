@@ -9,6 +9,7 @@ using eBookStore.Data;
 using eBookStore.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
+using eBookStore.Common;
 
 namespace eBookStore.Controllers
 {
@@ -52,31 +53,58 @@ namespace eBookStore.Controllers
             return View(book);
         }
 
-        // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int bookId, int quantity)
+        public async Task<IActionResult> AddToCart(int bookId, int quantity)
         {
-            Order order = new Order();
-            order.BookId = bookId;
-            order.Quantity = quantity;
-            order.UserId = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
-            order.Orderdate = DateTime.Today;
-            order.Status = "pending";
+            var addedItems = HttpContext.Session.GetComplexData<List<CartItem>>("CartItems");
+            var cartItems = addedItems == null ? new List<CartItem>() : addedItems;
+            var bookFromDb = _context.Books.Find(bookId);
 
-            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string sql;
-            sql = "UPDATE Books  SET Bookquantity  = Bookquantity   - '" + order.Quantity + "'  where (Id ='" + order.BookId + "' )";
-            SqlCommand comm = new SqlCommand(sql, conn);
-            conn.Open();
-            comm.ExecuteNonQuery();
+            cartItems.Add(new CartItem
+            {
+                ItemId = bookId,
+                ItemName = bookFromDb == null ? "" : bookFromDb.Title,
+                Quantity = quantity
+            });
 
+            HttpContext.Session.SetComplexData("CartItems", cartItems);
+            return RedirectToAction(nameof(Cart));
+        }
 
-            _context.Add(order);
+        public async Task<IActionResult> Cart()
+        {
+            var cartItems = HttpContext.Session.GetComplexData<List<CartItem>>("CartItems");
+            return View(cartItems);
+        }
+
+        public async Task<IActionResult> CompleteOrder()
+        {
+            var cartItems = HttpContext.Session.GetComplexData<List<CartItem>>("CartItems");
+
+            foreach (var item in cartItems)
+            {
+                Order order = new Order();
+                order.BookId = item.ItemId;
+                order.Quantity = item.Quantity;
+                order.UserId = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+                order.Orderdate = DateTime.Today;
+                order.Status = "pending";
+
+                SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\eBookStoreDB.mdf;Integrated Security=True;Connect Timeout=30");
+                string sql;
+                sql = "UPDATE Books  SET Bookquantity  = Bookquantity   - '" + order.Quantity + "'  where (Id ='" + order.BookId + "' )";
+                SqlCommand comm = new SqlCommand(sql, conn);
+                conn.Open();
+                comm.ExecuteNonQuery();
+                _context.Add(order);  
+            }
+
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(MyOrders));
+
+            HttpContext.Session.SetComplexData("CartItems", new List<CartItem>());
+
+            return RedirectToAction(nameof(MyOrders), new { status = "" });
         }
 
         public async Task<IActionResult> SetOrderStatus(int id, string status)
@@ -91,10 +119,22 @@ namespace eBookStore.Controllers
             return RedirectToAction(nameof(CustomerOrders), new { id = order.UserId });
         }
 
-        public async Task<IActionResult> MyOrders()
+        public async Task<IActionResult> MyOrders(string status = "")
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
-            var orderItems = await _context.Orders.FromSqlRaw("select * from Orders where UserId = '" + id + "'  ").ToListAsync();
+            var orderItems = new List<Order>();
+
+            if(status == "")
+            {
+                orderItems = await _context.Orders.FromSqlRaw("select * from Orders where UserId = '" + id + "'  ").ToListAsync();
+            }            
+            else
+            {
+                orderItems = _context.Orders.Where(x => x.Status == status && x.UserId == id).ToList();
+            }
+
+            orderItems = Enumerable.Reverse(orderItems).ToList();
+
             return View(orderItems);
         }
 

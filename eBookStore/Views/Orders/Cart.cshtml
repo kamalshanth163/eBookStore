@@ -1,0 +1,55 @@
+﻿@model IEnumerable<eBookStore.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
+
+<h1>CompleteOrder</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Count() == 0)
+        {
+        <div>
+            <p>No items added</p>
+        </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-primary" asp-action="CompleteOrder">Complete Order</a>
+</div>

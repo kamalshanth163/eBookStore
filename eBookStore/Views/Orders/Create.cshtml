@@ -1,7 +1,7 @@
 ﻿@model eBookStore.Models.Book
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add to cart";
 }
 
 @{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
@@ -63,7 +63,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AddToCart">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" name="bookId" value=@Model.Id />
             <div class="form-group">
@@ -71,7 +71,7 @@
                 <input name="Quantity" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Buy" class="btn btn-primary" />
+                <input type="submit" value="Add to cart" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -9,6 +9,7 @@ using eBookStore.Data;
 using eBookStore.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using eBookStore.Common;
 
 namespace eBookStore.Controllers
 {
@@ -46,6 +47,7 @@ namespace eBookStore.Controllers
                 return NotFound();
             }
 
+
             return View(book);
         }
 
@@ -67,6 +69,7 @@ namespace eBookStore.Controllers
             var feedbackDisplays = FeedbackDisplays(feedbacks);
 
             HttpContext.Session.SetString("BookId", bookId.ToString());
+
             return View(feedbackDisplays);
         }
 
@@ -76,14 +79,17 @@ namespace eBookStore.Controllers
 
             foreach (var fb in feedbacks)
             {
+                var bookFromDb = _context.Books.Find(fb.BookId);
+                var userFromDb = _context.Users.Find(fb.UserId);
+
                 var model = new FeedbackDisplay
                 {
                     Id = fb.Id,
-                    BookName = _context.Books.Find(fb.BookId) == null ? "" : _context.Books.Find(fb.BookId).Title,
-                    UserName = _context.Users.Find(fb.UserId) == null ? "" : _context.Users.Find(fb.UserId).Name,
+                    BookName = bookFromDb == null ? "" : bookFromDb.Title,
+                    UserName = userFromDb == null ? "" : userFromDb.Name,
                     FeedbackText = fb.FeedbackText,
                     Rating = fb.Rating,
-                    Imgfile = _context.Books.Find(fb.BookId) == null ? "" : _context.Books.Find(fb.BookId).Imgfile
+                    Imgfile = bookFromDb == null ? "" : bookFromDb.Imgfile
                 };
 
                 models.Add(model);
