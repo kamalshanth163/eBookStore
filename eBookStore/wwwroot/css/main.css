@@ -15155,32 +15155,39 @@ input[type="number"] {
     color: #62ab00 !important; }
 
 /*>>>>>>>> Buttons <<<<<<<<<*/
+.spaceed {
+    margin:10px 0 ;
+}
+
+
+
 .btn {
-  border-radius: 0;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  min-height: 50px;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 0 50px;
-  border-radius: 3px;
-  text-transform: uppercase;
-  line-height: 1; }
+    border-radius: 0;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-height: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 50px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    line-height: 1;
+}
   .btn-outlined {
     background: transparent;
-    border: 2px solid #ececec;
-    color: #333; }
+    border: 2px solid #ececec !important;
+    color: #333 !important; }
     .btn-outlined:hover {
       border: 2px solid #62ab00;
       background: #62ab00;
-      color: #fff; }
+      color: #fff !important; }
     .btn-outlined--primary {
       background: transparent;
       border: 2px solid #62ab00 !important;
@@ -17313,6 +17320,52 @@ input[type="number"] {
   margin-right: 50px;
   font-size: 12px; }
 
+
+
+/*>>>>>>>> Custom <<<<<<<<<*/
+
+.wrapper-warning {
+}
+
+    .wrapper-warning .card {
+        width: 400px;
+        height: 120px;
+        background-color: #fff;
+        padding: 35px 20px !important;
+        display: flex;
+        justify-content: center;
+        border-left: 5px solid #b23849;
+        border-radius: 3px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+        .wrapper-warning .card .subject {
+            margin-right: 30px;
+        }
+
+            .wrapper-warning .card .subject p {
+                color: #909092;
+            }
+
+        .wrapper-warning .card .icon {
+            font-size: 28px;
+            color: #b23849;
+        }
+
+        .wrapper-warning .card .icon-times {
+            font-size: 28px;
+            color: #c3c2c7;
+            cursor: pointer;
+        }
+
+
+.centreit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /*>>>>>>>> Hero Area <<<<<<<<<*/
 .hero-area .home-content {
   border-radius: 3px;
@@ -18091,10 +18144,11 @@ input[type="number"] {
     font-size: 14px;
     color: #333; }
     .breadcrumb-contents .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
-      color: #333;
-      content: "\f3d3";
-      font-family: "Ionicons";
-      font-size: 12px; }
+        color: #333;
+        content: "\f061";
+        font-family: "fontAwesome";
+        font-size: 12px;
+    }
     .breadcrumb-contents .breadcrumb .breadcrumb-item a:hover {
       color: #62ab00; }
     .breadcrumb-contents .breadcrumb .breadcrumb-item.active a {
@@ -19201,7 +19255,11 @@ input[type="number"] {
     color: #333;
     font-size: 15px;
     font-weight: 700;
-    text-transform: capitalize; }
+    text-transform: capitalize;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
     .product-details-info .add-to-cart-row .add-cart-btn .btn span {
       padding-right: 5px; }
 
@@ -21175,13 +21233,18 @@ p.form-messege {
       padding: 15px; } }
   .login-form .btn {
     text-transform: capitalize;
-    font-size: 15px; }
-  .login-form label {
+    font-size: 15px;
+  }
+
+
+
+.login-form label {
     display: block;
     font-size: 13px;
     margin-bottom: 8px;
     font-weight: 400;
-    text-transform: capitalize; }
+    text-transform: capitalize;
+}
   .login-form .nice-select {
     width: 100%;
     background-color: transparent;
