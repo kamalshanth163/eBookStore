@@ -25,6 +25,7 @@ namespace eBookStore.Controllers
             return View(_context.Books.Where(x => x.Title.Contains(searchTerm) || searchTerm == null || searchTerm == "").ToList());
         }
 
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,6 +46,17 @@ namespace eBookStore.Controllers
         public async Task<IActionResult> Index()
         {
             return View(_context.Books.ToList().Take(5));
+        }
+
+
+        public async Task<IActionResult> About()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Contact()
+        {
+            return View();
         }
     }
 }
