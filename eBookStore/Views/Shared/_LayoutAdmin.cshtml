@@ -4,60 +4,101 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - eBookStore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link type="image/x-icon" href="~/favicon.ico" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/css/plugins.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/brands.css" rel="stylesheet" />
+
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eBookStore</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="AdminDashboard">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Create">Add Book</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Manage Books</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="CustomerReport">Manage Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Manage Cutomers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index">Generate Reports</a>
-                        </li>
-                        <li class="nav-item justify-content-end">
-                            <a class="nav-link text-light btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
-                        </li>
-                    </ul>
+
+
+    <div class="site-wrapper" id="top">
+        <div class="site-header d-none d-lg-block">
+            <div class="header-middle pt--10 pb--10">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2">
+                            <a asp-area="" asp-controller="Users" asp-action="AdminDashboard" class="site-brand">
+                                <img src="~/image/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="main-navigation flex-lg-right">
+                                <ul class="main-menu menu-right">
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Users" asp-action="AdminDashboard">Dashboard</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Books" asp-action="Create">Add Book</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Books" asp-action="Index">Manage Book</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Orders" asp-action="CustomerReport">Manage Orders</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Users" asp-action="Index">Manage Customers</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Reports" asp-action="Index">Generate Reports</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - eBookStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+
+    <!--=================================
+    Footer Area
+    ===================================== -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="brand-footer footer-title">
+                    <img src="~/image/logo--footer.png" alt="" />
+                </div>
+                <p class="copyright-text">
+                    Copyright © 2022 <a asp-area="" asp-controller="home" asp-action="index" class="author">Ebook.lk</a>. All Right
+                    Reserved.
+                    <br />
+                    Design and Developed By Subiharan & Kamal
+                </p>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/ajax-mail.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/fontawesome-iconpicker/js/fontawesome-iconpicker.js"></script>
+    <script src="~/lib/font-awesome/js/all.js"></script>
+    <script src="~/lib/font-awesome/js/brands.js"></script>
+    <script src="~/lib/font-awesome/js/fontawesome.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
