@@ -361,3 +361,4 @@ C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp
 C:\Users\Administrator\source\repos\e-book-store\eBookStore\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\EditUserbyAdmin.cshtml.g.cs

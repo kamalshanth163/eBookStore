@@ -1,0 +1,55 @@
+﻿@model eBookStore.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
+
+
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="user" asp-action="admindashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Edit User</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+        <div class="row centreit">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form asp-action="Edit">
+                    <div class="login-form">
+                        <h4 class="login-title">Edit User Details</h4>
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="col-md-12 col-12 mb--15">
+                                <label asp-for="Name">Name</label>
+                                <input asp-for="Name" class="mb-0 form-control" />
+                            </div>
+                            <input type="hidden" asp-for="Role" />
+                            <div class="col-12 mb--20">
+                                <label asp-for="Email">Email</label>
+                                <input asp-for="Email" name="email" type="email" class="mb-0 form-control"
+                                       id="email" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" value="Save" class="btn btn-outlined" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

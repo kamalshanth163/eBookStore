@@ -164,5 +164,14 @@ namespace eBookStore.Controllers
 
             return View(dashboard);
         }
+
+
+        // GET: Users/Edit/5
+        public async Task<IActionResult> EditUserbyAdmin()
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var user = await _context.Users.FindAsync(id);
+            return View(user);
+        }
     }
 }
