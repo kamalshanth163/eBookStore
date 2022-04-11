@@ -5,17 +5,67 @@
 
 @{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
 
-<h1>Generate Reports</h1>
 
-<h2>
-    @Html.ActionLink("Generate Book Report", "GenerateBookReport", "Reports")
-</h2>
-<h2>
-    @Html.ActionLink("Generate User Report", "GenerateUserReport", "Reports")
-</h2>
-<h2>
-    @Html.ActionLink("Generate Order Report", "GenerateOrderReport", "Reports")
-</h2>
-<h2>
-    @Html.ActionLink("Generate Feedback Report", "GenerateFeedbackReport", "Reports")
-</h2>
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="users" asp-action="admindashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Reports</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <h1>Generate Reports</h1>
+
+        <div class="report-card">
+            <h3>
+                @Html.ActionLink("Generate Book Report", "GenerateBookReport", "Reports")
+            </h3>
+        </div>
+
+        <div class="report-card">
+            <h3>
+                @Html.ActionLink("Generate User Report", "GenerateUserReport", "Reports")
+            </h3>
+        </div>
+
+        <div class="report-card">
+            <h3>
+                @Html.ActionLink("Generate Order Report", "GenerateOrderReport", "Reports")
+
+            </h3>
+        </div>
+
+        <div class="report-card">
+            <h3>
+                @Html.ActionLink("Generate Feedback Report", "GenerateFeedbackReport", "Reports")
+
+            </h3>
+        </div>
+
+
+
+
+
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
