@@ -6,37 +6,52 @@
 
 @{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
 
-<h1>Edit</h1>
-
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="home" asp-action="index">Home</a></li>
+                        <li class="breadcrumb-item active">My Account</li>
+                    </ol>
+                </nav>
             </div>
-            <div class="form-group">
-                <label asp-for="Pass" class="control-label"></label>
-                <input asp-for="Pass" class="form-control" />
-                <span asp-validation-for="Pass" class="text-danger"></span>
+        </section>
+        <div class="row centreit">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form asp-action="Edit">
+                    <div class="login-form">
+                        <h4 class="login-title">Edit Your Details</h4>
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="col-md-12 col-12 mb--15">
+                                <label asp-for="Name">Name</label>
+                                <input asp-for="Name" class="mb-0 form-control" />
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Pass">Password</label>
+                                <input asp-for="Pass" class="mb-0 form-control"
+                                       id="password" />
+                            </div>
+                            <input type="hidden" asp-for="Role" />
+                            <div class="col-12 mb--20">
+                                <label asp-for="Email">Email</label>
+                                <input asp-for="Email" name="email" type="email" class="mb-0 form-control"
+                                       id="email" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" value="Save" class="btn btn-outlined" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <input type="hidden" asp-for="Role" />
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</main>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
