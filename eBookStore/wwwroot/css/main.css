@@ -19225,8 +19225,17 @@ input[type="number"] {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-bottom: -10px; }
-  .product-details-info .add-to-cart-row > div {
-    margin-bottom: 10px; }
+
+
+.spac {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.product-details-info .add-to-cart-row > div {
+    margin-bottom: 10px;
+}
   .product-details-info .add-to-cart-row .count-input-block {
     -webkit-box-align: center;
     -ms-flex-align: center;
