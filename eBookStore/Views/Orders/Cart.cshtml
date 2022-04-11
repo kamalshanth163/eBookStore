@@ -6,50 +6,69 @@
 
 @{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
 
-<h1>CompleteOrder</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(Model.Count() == 0)
-        {
-        <div>
-            <p>No items added</p>
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="books" asp-action="catalogue">Home</a></li>
+                    <li class="breadcrumb-item active">Cart View</li>
+                </ol>
+            </nav>
         </div>
-        }
-        else
-        {
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ItemId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ItemName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                </tr>
-            }
-        }
+    </div>
+</section>
 
-    </tbody>
-</table>
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
 
-<div>
-    <a class="btn btn-primary" asp-action="CompleteOrder">Complete Order</a>
-</div>
+        <div class="myaccount-content">
+            <h3>Added Books</h3>
+
+            <div class="myaccount-table table-responsive text-center">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ItemId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ItemName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Quantity)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <div>
+                                <p>No items added</p>
+                            </div>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ItemId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ItemName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <a class="btn btn-outlined--primary" asp-action="CompleteOrder">Complete Order</a>
+            </div>
+        </div>
+    </div>
+</main>
