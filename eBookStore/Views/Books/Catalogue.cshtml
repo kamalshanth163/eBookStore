@@ -28,13 +28,14 @@
             <div class="row align-items-center">
                 <div class="col-xl-12 col-lg-4 col-md-4 col-sm-6 mt--10 mt-md--0 ">
                     <div class="header-search-block">
-                        @using (Html.BeginForm(FormMethod.Get))
+                        @*@using (Html.BeginForm(FormMethod.Get))
                         {
-                            @Html.TextBox("searchTerm")<input type="submit" value="Search Books here" /> @Html.ActionLink("View all", "Index", new { searchTerm = "" })
-                        }
-                        @*<input type="text" placeholder="Search Books here">*@
-
-                        @*<button>Search</button>*@
+                            @Html.TextBox("searchTerm")
+                        <input type="submit" value="Search Books here" /> 
+                        @Html.ActionLink("View all", "Index", new { searchTerm = "" })
+                        }*@
+                        <input type="text" placeholder="Search Books here">
+                        <button>Search</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +73,9 @@
                                                     <i class="fas fa-shopping-basket"></i>
                                                 </a>
                                                 <a class="single-btn">
-                                                    <i class="fa-solid fa-comment-dots"></i>
+                                                    <i class="fa-solid fa-comment-dots">
+                                                        @Html.ActionLink("Feedbacks", "Feedbacks", new { bookId = item.Id, userId = 0 })
+                                                    </i>
                                                 </a>
                                                 <a class="single-btn" asp-action="Details" asp-route-id="@item.Id">
                                                     <i class="fas fa-eye"></i>

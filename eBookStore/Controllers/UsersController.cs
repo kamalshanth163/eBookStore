@@ -61,7 +61,9 @@ namespace eBookStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string name, string pass)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Name == name && x.Pass == pass);
+            var user = _context.Users.FirstOrDefault(x => x.Name == name && x.Pass == pass && x.Role == "customer");
+
+            ViewData["Message"] = "";
 
             if (user != null)
             {
@@ -70,10 +72,7 @@ namespace eBookStore.Controllers
                 HttpContext.Session.SetString("UserId", user.Id.ToString());
                 HttpContext.Session.SetComplexData("CartItems", new List<CartItem>());
 
-                if (user.Role == "customer")
-                    return RedirectToAction("catalogue", "books");
-                else
-                    return RedirectToAction("Index", "books");
+                return RedirectToAction("catalogue", "books");
             }
             else
             {
@@ -82,14 +81,14 @@ namespace eBookStore.Controllers
             }
         }
 
-
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Role,Pass,Email")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Name,Pass,Email")] User user)
         {
+            user.Role = "customer";
             _context.Add(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Login));
