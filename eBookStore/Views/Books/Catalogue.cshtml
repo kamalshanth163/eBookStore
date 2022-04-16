@@ -28,14 +28,13 @@
             <div class="row align-items-center">
                 <div class="col-xl-12 col-lg-4 col-md-4 col-sm-6 mt--10 mt-md--0 ">
                     <div class="header-search-block">
-                        @*@using (Html.BeginForm(FormMethod.Get))
-                        {
-                            @Html.TextBox("searchTerm")
-                        <input type="submit" value="Search Books here" /> 
-                        @Html.ActionLink("View all", "Index", new { searchTerm = "" })
-                        }*@
-                        <input type="text" placeholder="Search Books here">
-                        <button>Search</button>
+
+                        <form asp-controller="Books" asp-action="Catalogue">
+                            <input type="text" placeholder="Search Books here" name="searchTerm"> 
+                            <button type="submit">Search</button>                            
+                            @Html.ActionLink("View all", "Catalogue", "Books", null, new { searchTerm = "" })
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -72,10 +71,8 @@
                                                 <a asp-controller="orders" asp-action="Create" asp-route-id="@item.Id" class="single-btn">
                                                     <i class="fas fa-shopping-basket"></i>
                                                 </a>
-                                                <a class="single-btn">
-                                                    <i class="fa-solid fa-comment-dots">
-                                                        @Html.ActionLink("Feedbacks", "Feedbacks", new { bookId = item.Id, userId = 0 })
-                                                    </i>
+                                                <a asp-controller="Books" asp-action="Feedbacks" asp-route-bookId="@item.Id" asp-route-userId=0 class="single-btn">
+                                                    <i class="fa-solid fa-comment-dots"></i>
                                                 </a>
                                                 <a class="single-btn" asp-action="Details" asp-route-id="@item.Id">
                                                     <i class="fas fa-eye"></i>
