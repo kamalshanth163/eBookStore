@@ -27,13 +27,11 @@
             <div class="row align-items-center">
                 <div class="col-xl-12 col-lg-4 col-md-4 col-sm-6 mt--10 mt-md--0 ">
                     <div class="header-search-block">
-                        @using (Html.BeginForm(FormMethod.Get))
-                        {
-                            @Html.TextBox("searchTerm")<input type="submit"  value="Search Books here" /> @Html.ActionLink("View all", "Index", new { searchTerm = "" })
-                        }
-                        @*<input type="text" placeholder="Search Books here">*@
-
-                        @*<button>Search</button>*@
+                        <form asp-controller="Home" asp-action="Books">
+                            <input type="text" placeholder="Search Books here" name="searchTerm">
+                            <button type="submit">Search</button>
+                            @Html.ActionLink("View all", "Books", "Home", null, new { searchTerm = "" })
+                        </form>
                     </div>
                 </div>
             </div>
@@ -92,13 +90,3 @@
         </div>
     </div>
 </main>
-
-
-
-        <div>
-            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-            {
-                @Html.TextBox("searchTerm")<input type="submit" value="Search" /> @Html.ActionLink("View all", "Index", new { searchTerm = "" })
-            }
-        </div>
-        <br />
