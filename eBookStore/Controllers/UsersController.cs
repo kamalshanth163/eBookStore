@@ -46,6 +46,23 @@ namespace eBookStore.Controllers
             return View(user);
         }
 
+        public async Task<IActionResult> UserDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -94,11 +111,25 @@ namespace eBookStore.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        // GET: Users/Edit/5
+        // GET: Users/Edit
         public async Task<IActionResult> Edit()
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
             var user = await _context.Users.FindAsync(id);
+            return View(user);
+        }
+
+        public async Task<IActionResult> EditAdmin()
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var user = await _context.Users.FindAsync(id);
+            return View(user);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditUserByAdmin(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
             return View(user);
         }
 
