@@ -371,3 +371,7 @@ C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\LoginAdmin.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserDetails.cshtml.g.cs
 C:\Users\DELL\Desktop\eBookStore\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\EditAdmin.cshtml.g.cs
+C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateAdmin.cshtml.g.cs
+C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\LoginAdmin.cshtml.g.cs
+C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\EditAdmin.cshtml.g.cs
+C:\Users\Administrator\source\repos\e-book-store\eBookStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserDetails.cshtml.g.cs

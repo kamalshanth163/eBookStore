@@ -17371,8 +17371,31 @@ input[type="number"] {
 
 /*>>>>>>>> Custom <<<<<<<<<*/
 
-.wrapper-warning {
+.feedback-book-info{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: 0 0 50px 0;
+    gap: 50px;
 }
+
+.feedback-add-bar {
+    margin: 0 0 50px 0;
+    display:flex;
+    justify-content:center;
+    
+}
+
+    .feedback-add-bar input {
+        width: 200px;
+        height: 35px;
+        margin: 0 10px;
+    }
+
+
+
+    .wrapper-warning {
+    }
 
     .wrapper-warning .card {
         width: 400px;
