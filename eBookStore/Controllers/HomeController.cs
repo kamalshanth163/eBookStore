@@ -45,7 +45,7 @@ namespace eBookStore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_context.Books.ToList().Take(5));
+            return View(_context.Books.ToList().Take(8));
         }
 
 
