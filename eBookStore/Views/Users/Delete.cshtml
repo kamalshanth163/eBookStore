@@ -6,7 +6,68 @@
 
 @{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
 
-<h1>Delete</h1>
+
+
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="users" asp-action="admindashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Delete User</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+        <div class="row flex-column">
+            <h4>Are you sure you want to delete this User ?</h4> 
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Role)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Role)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+@*<h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -44,4 +105,4 @@
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>
+</div>*@

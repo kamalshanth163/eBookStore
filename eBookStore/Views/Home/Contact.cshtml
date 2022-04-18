@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Contact Page";
+}
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="" asp-controller="home" asp-action="index">Home</a></li>
+                    <li class="breadcrumb-item active">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="">
+            <div class="promo-wrapper promo-type-three">
+                <a href="#"
+                   class="promo-image promo-overlay bg-image"
+                   data-bg="../../image/bg-images/promo-banner-bookshop-full.png">
+                </a>
+            </div>
+        </section>
+
+        <div class="row mt--60 ">
+            <div class="col-lg-10 col-md-10 col-12">
+                <div class="contact_adress">
+                    <div class="ct_address">
+                        <h3 class="ct_title">Location & Details</h3>
+                        <p>Are you a customer who needs ebook.lk contact ?</p>
+                    </div>
+                    <div class="address_wrapper">
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <p><span>Address:</span> 12/6, Paradeniya Road <br> Kandy. Sri Lanka</p>
+                            </div>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <p><span>Email: </span> info@ebook.com </p>
+                            </div>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <p><span>Phone:</span> +94 775 430 351 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+

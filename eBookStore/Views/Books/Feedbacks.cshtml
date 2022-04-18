@@ -6,53 +6,75 @@
 
 @{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
 
-<h1>Feedbacks</h1>
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="books" asp-action="catalogue">Home</a></li>
+                    <li class="breadcrumb-item active">Feedbacks</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
 
-<div>
-    @if (Model.Any())
-    {
-        <h2>@Model.ToList()[0].BookName</h2><br />
-        <img src="~/images/@Model.ToList()[0].Imgfile" height="150" />
-    }
-</div>
 
-<br />
-<div>
-    @using (Html.BeginForm("CreateFeedback", "Books", FormMethod.Post))
-    {
-        <span>Feedback: @Html.TextBox("feedbackText")</span> <span>Rating: @Html.TextBox("rating")</span> <input type="submit" value="Submit" /> <span>@Html.ActionLink("View all", "AllFeedbacks") | @Html.ActionLink("My feedbacks", "MyFeedbacks")</span>
-    }
-</div>
-<br />
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FeedbackText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rating)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FeedbackText)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <div class="myaccount-content">
+
+            <div class="feedback-book-info">
+                @if (Model.Any())
+                {
+                    <img src="~/image/products/@Model.ToList()[0].Imgfile" height="250" />
+                    <h2>@Model.ToList()[0].BookName</h2>
+                }
+            </div>
+
+            <div class="feedback-add-bar">
+                @using (Html.BeginForm("CreateFeedback", "Books", FormMethod.Post))
+                {
+                    <span>Feedback: @Html.TextBox("feedbackText")</span> <span>Rating: @Html.TextBox("rating")</span> <input type="submit" value="Submit" /> <span>@Html.ActionLink("View all", "AllFeedbacks") | @Html.ActionLink("My feedbacks", "MyFeedbacks")</span>
+                }
+            </div>
+
+
+            <div class="myaccount-table table-responsive text-center">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FeedbackText)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Rating)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FeedbackText)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Rating)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>

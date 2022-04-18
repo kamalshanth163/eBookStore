@@ -151,7 +151,7 @@ namespace eBookStore.Controllers
             {
                 string filename = file.FileName;
                 //  string  ext = Path.GetExtension(file.FileName);
-                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images"));
+                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\image\\products"));
                 using (var filestream = new FileStream(Path.Combine(path, filename), FileMode.Create))
                 { await file.CopyToAsync(filestream); }
 
@@ -189,7 +189,7 @@ namespace eBookStore.Controllers
             {
                 string filename = file.FileName;
                 //  string  ext = Path.GetExtension(file.FileName);
-                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images"));
+                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\image\\products"));
                 using (var filestream = new FileStream(Path.Combine(path, filename), FileMode.Create))
                 { await file.CopyToAsync(filestream); }
 

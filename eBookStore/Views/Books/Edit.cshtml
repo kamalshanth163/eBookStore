@@ -6,67 +6,79 @@
 
 @{Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
 
-<h1>Edit</h1>
 
-<h4>Book</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Info" class="control-label"></label>
-                <input asp-for="Info" class="form-control" />
-                <span asp-validation-for="Info" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bookquantity" class="control-label"></label>
-                <input asp-for="Bookquantity" class="form-control" />
-                <span asp-validation-for="Bookquantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Catagory</label>
-                <select name="category" class="form-control" asp-for="Category">
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Engineering">Engineering</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Politics">Politics</option>
-                    <option value="Space Science">Space Science</option>
-                    <option value="Arts & Music">Arts & Music</option>
-                    <option value="Spirituality">Spirituality</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
-            </div>
 
-            <img src="~/images/@Model.Imgfile" height="150" />
-            <input type="hidden" asp-for="Imgfile" />
-
-            <div class="form-group">
-                <label class="control-label">Pic</label>
-                <input type="file" class="form-control" name="file" />
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="users" asp-action="admindashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Edit Book</li>
+                    </ol>
+                </nav>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+        </section>
+        <div class="row centreit">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div class="login-form">
+                        <h4 class="login-title">Update Book</h4>
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="col-md-12 col-12 mb--15">
+                                <label asp-for="Title">Book Title</label>
+                                <input asp-for="Title" class="mb-0 form-control" />
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Info">Info</label>
+                                <textarea asp-for="Info" class="mb-0 form-control"></textarea>
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Bookquantity">Qty</label>
+                                <input asp-for="Bookquantity" type="number" class="mb-0 form-control" />
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Price">Price</label>
+                                <input asp-for="Price" type="number" class="mb-0 form-control" />
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label>Catagory</label>
+                                <select name="category" class="mb-0 form-control" asp-for="Category">
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Medicine">Medicine</option>
+                                    <option value="Politics">Politics</option>
+                                    <option value="Space Science">Space Science</option>
+                                    <option value="Arts & Music">Arts & Music</option>
+                                    <option value="Spirituality">Spirituality</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Author">Author</label>
+                                <input asp-for="Author" type="text" class="mb-0 form-control" />
+                            </div>
+                            <div class="col-12 mb--20">
+                                <img src="~/image/products/@Model.Imgfile" height="150" />
+                                <input type="hidden" asp-for="Imgfile" />
+                            </div>
+                                <div class="col-12 mb--20">
+                                    <label>Image</label>
+                                    <input type="file" class="mb-0 form-control" name="file" />
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="submit" value="Save" class="btn btn-outlined" />
+                                </div>
+                            </div>
+                        </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</main>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

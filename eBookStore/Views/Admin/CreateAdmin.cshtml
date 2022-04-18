@@ -1,0 +1,81 @@
+﻿@model eBookStore.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+
+
+
+
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="home" asp-action="index">Home</a></li>
+                        <li class="breadcrumb-item active">Register</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+
+        <div class="row centreit">
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
+                <form asp-action="CreateAdmin">
+                    <div class="login-form">
+                        <h4 class="login-title">New Admin</h4>
+                        <p>
+                            <span class="font-weight-bold">I am a new admin</span>
+                        </p>
+                        <div class="row">
+                            @*<input hidden name="role" value="customer" asp-for="Role"
+                                   type="text"
+                                   id="role" />*@
+                            <div class="col-md-12 col-12 mb--15">
+                                <label asp-for="Name">Full Name</label>
+                                <input class="mb-0 form-control" asp-for="Name"
+                                       type="text"
+                                       id="name"
+                                       placeholder="Enter your full name" />
+
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Email" for="email">Email</label>
+                                <input asp-for="Email" class="mb-0 form-control"
+                                       type="email"
+                                       id="email"
+                                       placeholder="Enter Your Email Address Here.." />
+
+                            </div>
+                            <div class="col-lg-6 mb--20">
+                                <label asp-for="Pass" for="password">Password</label>
+                                <input asp-for="Pass" class="mb-0 form-control"
+                                       type="password"
+                                       id="password"
+                                       placeholder="Enter your password" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" value="Register" class="btn btn-outlined" />
+                            </div>
+                            <div class="col-md-12 spaceed">
+                                Already have an account? <a asp-action="LoginAdmin">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+      </main>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

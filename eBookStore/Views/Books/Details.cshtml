@@ -6,55 +6,88 @@
 
 @{Layout = "~/Views/Shared/_LayoutCustomer.cshtml";}
 
-<h1>Details</h1>
 
-<div>
-    <h4>Book</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Info)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Info)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookquantity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookquantity)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imgfile)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Imgfile)
-        </dd>
-        <img src="~/images/@Model.Imgfile" height="150" />
-        <input type="hidden" asp-for="Imgfile" />
-    </dl>
-</div>
+
+<main class="">
+
+    <div class="container">
+
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="books" asp-action="catalogue">Home </a></li>
+                        <li class="breadcrumb-item active">Book Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <div class="row  mb--60">
+            <div class="col-lg-5 mb--30">
+                <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
+              "slidesToShow": 1,
+              "arrows": false,
+              "fade": true,
+              "draggable": false,
+              "swipe": false,
+              "asNavFor": ".product-slider-nav"
+              }'>
+                    <div class="single-slide">
+                        <img src="~/image/products/@Model.Imgfile" alt="">
+                    </div>
+                </div>
+                <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two" data-slick-setting='{
+            "infinite":true,
+              "autoplay": true,
+              "autoplaySpeed": 8000,
+              "slidesToShow": 4,
+              "arrows": true,
+              "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
+              "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
+              "asNavFor": ".product-details-slider",
+              "focusOnSelect": true
+              }'>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="product-details-info pl-lg--30 ">
+                    <h3 class="product-title">
+                        @Html.DisplayFor(model => model.Title)
+                    </h3>
+                    <ul class="list-unstyled">
+                        <li>Language : <span class="list-value"> English</span></li>
+                        <li>Author : <a href="#" class="list-value font-weight-bold">@Html.DisplayFor(model => model.Author)</a></li>
+                        <li>Category : <span class="list-value">@Html.DisplayFor(model => model.Category)</span></li>
+                        <li>ISBN : <span class="list-value">1510109064</span></li>
+                        <li>Availability : <span class="list-value"> @Html.DisplayFor(model => model.Bookquantity) Books In Stock</span></li>
+                    </ul>
+                    <div class="price-block">
+                        <span class="price-new">LKR @Html.DisplayFor(model => model.Price)</span>
+                    </div>
+
+                    <article class="product-details-article">
+                        <h4 class="">Book Summery</h4>
+                        <p>
+                            @Html.DisplayFor(model => model.Info)
+                        </p>
+                    </article>
+
+
+                    <div class="add-to-cart-row">
+
+                            <div class="add-cart-btn">
+                                <a asp-controller="orders" asp-action="Create" asp-route-id="@Model.Id">
+                                    <div class="btn btn-outlined--primary">
+                                        Buy This Book
+                                    </div>
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>

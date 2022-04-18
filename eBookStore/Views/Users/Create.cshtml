@@ -6,46 +6,75 @@
 
 @{Layout = "~/Views/Shared/_Layout.cshtml";}
 
-<h1>Create</h1>
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+
+
+
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="home" asp-action="index">Home</a></li>
+                        <li class="breadcrumb-item active">Register</li>
+                    </ol>
+                </nav>
             </div>
-            <div class="form-group">
-                <label class="control-label">Role</label>
-                <select name="role" class="form-control" asp-for="Role">
-                    <option value="customer">Customer</option>
-                    <option value="admin">Admin</option>
-                </select>
+        </section>
+
+
+        <div class="row centreit">
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
+                <form asp-action="Create">
+                    <div class="login-form">
+                        <h4 class="login-title">New Customer</h4>
+                        <p>
+                            <span class="font-weight-bold">I am a new customer</span>
+                        </p>
+                        <div class="row">
+                            @*<input hidden name="role" value="customer" asp-for="Role"
+                                   type="text"
+                                   id="role" />*@
+                            <div class="col-md-12 col-12 mb--15">
+                                <label asp-for="Name">Full Name</label>
+                                <input class="mb-0 form-control" asp-for="Name"
+                                       type="text"
+                                       id="name"
+                                       placeholder="Enter your full name" />
+
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Email" for="email">Email</label>
+                                <input asp-for="Email" class="mb-0 form-control"
+                                       type="email"
+                                       id="email"
+                                       placeholder="Enter Your Email Address Here.." />
+
+                            </div>
+                            <div class="col-lg-6 mb--20">
+                                <label asp-for="Pass" for="password">Password</label>
+                                <input asp-for="Pass" class="mb-0 form-control"
+                                       type="password"
+                                       id="password"
+                                       placeholder="Enter your password" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" value="Register" class="btn btn-outlined" />
+                            </div>
+                            <div class="col-md-12 spaceed">
+                                Already have an account? <a asp-action="Login">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Pass" class="control-label">Password</label>
-                <input asp-for="Pass" class="form-control" />
-                <span asp-validation-for="Pass" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+      </main>
 
-<div>
-    Already have an account? <a asp-action="Login">Login</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

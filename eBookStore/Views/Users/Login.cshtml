@@ -8,23 +8,56 @@
 
 @{Layout = "~/Views/Shared/_Layout.cshtml";}
 
-<h2>login</h2>
-<form asp-action="Login">
-    <div class="form-group">
-        <label class="control-label"> User Name</label>
-        <input name="name" class="form-control" />
+
+
+
+
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <section class="breadcrumb-section">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-area="" asp-controller="home" asp-action="index">Home</a></li>
+                        <li class="breadcrumb-item active">Login</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+        <div class="row centreit">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form asp-action="Login">
+                    <div class="login-form">
+                        <h4 class="login-title">Customer Login</h4>
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb--15">
+                                <input name="name" class="mb-0 form-control"
+                                       type="text"
+                                       id="uname"
+                                       placeholder="Enter your user name here..." />
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label for="password">Password</label>
+                                <input name="pass" type="password" class="mb-0 form-control"
+                                       id="login-password"
+                                       placeholder="Enter your password" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" value="Login" class="btn btn-outlined" />
+                                <p style="color:red"> @ViewData["message"]</p>
+
+                            </div>
+
+                            <div class="col-md-12 spaceed">
+                                    Don't' have an account? <a asp-action="Create">Register</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="pass" class="control-label"> User Password</label>
-        <input name="pass" type="password" class="form-control" /> <br />
-    </div>
-    <input type="submit" value="Login" class="btn btn-primary" />
-
-    <p style="color:red"> @ViewData["message"]</p>
-</form>
-
-<div>
-    Don't' have an account? <a asp-action="Create">Register</a>
-</div>
-
+      </main>
 

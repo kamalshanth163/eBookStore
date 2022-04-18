@@ -20,10 +20,11 @@ namespace eBookStore.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchTerm)
+        public async Task<IActionResult> Books(string searchTerm)
         {
             return View(_context.Books.Where(x => x.Title.Contains(searchTerm) || searchTerm == null || searchTerm == "").ToList());
         }
+
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -40,6 +41,22 @@ namespace eBookStore.Controllers
             }
 
             return View(book);
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(_context.Books.ToList().Take(8));
+        }
+
+
+        public async Task<IActionResult> About()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Contact()
+        {
+            return View();
         }
     }
 }

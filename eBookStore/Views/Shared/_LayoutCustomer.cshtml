@@ -1,57 +1,207 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - eBookStore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] - E-Book - Online Book Store</title>
+
+    <link type="image/x-icon" href="~/favicon.ico" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/css/plugins.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/brands.css" rel="stylesheet" />
+
+
+
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eBookStore</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Catalogue"> Books</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Cart">Cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="MyOrders">My Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Edit">Edit My Info</a>
-                        </li>
-                        <li class="nav-item justify-content-end">
-                            <a class="nav-link text-light btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
-                        </li>
-                    </ul>
+
+
+    <div class="site-wrapper" id="top">
+        <div class="site-header d-none d-lg-block">
+            <div class="header-middle pt--10 pb--10">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2">
+                            <a asp-area="" asp-controller="home" asp-action="index" class="site-brand">
+                                <img src="~/image/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="main-navigation flex-lg-right">
+                                <ul class="main-menu menu-right">
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Books" asp-action="Catalogue">Books</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Orders" asp-action="MyOrders">My Orders</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a asp-area="" asp-controller="Users" asp-action="Edit">My Account</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="main-navigation flex-lg-right">
+                                <div class="cart-widget">
+                                    <div class="login-block">
+                                        <a asp-area="" asp-controller="Home" asp-action="Index" class="font-weight-bold">logout</a>
+                                    </div>
+                                    <a asp-area="" asp-controller="Orders" asp-action="Cart">
+                                        <div class="cart-block">
+                                            <div class="cart-total">
+                                                <span class="text-item"> view shopping cart </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+
+        <div class="site-mobile-menu">
+            <header class="mobile-header d-block d-lg-none pt--10 pb-md--10">
+                <div class="container">
+                    <div class="row align-items-sm-end align-items-center">
+                        <div class="col-md-4 col-7">
+                            <a asp-area="" asp-controller="home" asp-action="index" class="site-brand">
+                                <img src="image/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="col-md-5 order-3 order-md-2"></div>
+                        <div class="col-md-3 col-5 order-md-3 text-right">
+                            <div class="mobile-header-btns header-top-widget">
+                                <ul class="header-links">
+                                    <li class="sin-link">
+                                        <a href="cart.html" class="cart-link link-icon">
+                                            <i class="ion-bag"></i>
+                                        </a>
+                                    </li>
+                                    <li class="sin-link">
+                                        <a href="javascript:"
+                                           class="link-icon hamburgur-icon off-canvas-btn">
+                                            <i class="ion-navicon"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <aside class="off-canvas-wrapper">
+                <div class="btn-close-off-canvas">
+                    <i class="ion-android-close"></i>
+                </div>
+                <div class="off-canvas-inner">
+                    mobile menu start
+                    <div class="mobile-navigation">
+                        mobile menu navigation start
+                        <nav class="off-canvas-nav">
+                            <ul class="mobile-menu main-mobile-menu">
+                                <li><a asp-area="" asp-controller="home" asp-action="Index">home</a></li>
+                            </ul>
+                            <ul class="mobile-menu main-mobile-menu">
+                                <li><a asp-area="" asp-controller="home" asp-action="Books">books</a></li>
+                            </ul>
+                            <ul class="mobile-menu main-mobile-menu">
+                                <li><a asp-area="" asp-controller="home" asp-action="About">about us</a></li>
+                            </ul>
+                            <ul class="mobile-menu main-mobile-menu">
+                                <li><a asp-area="" asp-controller="home" asp-action="Contact">contact us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <nav class="off-canvas-nav">
+                        <ul class="mobile-menu menu-block-2">
+                            <li class="menu-item-has-children">
+                                <a href="#">login</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">register</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">my account <i class="fas fa-angle-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="">my account</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="off-canvas-bottom">
+                        <div class="contact-list mb--10">
+                            <a href="" class="sin-contact"><i class="fas fa-mobile-alt"></i>(+94) 775430356</a>
+                            <a href="" class="sin-contact"><i class="fas fa-envelope"></i>info@ebook.com</a>
+                        </div>
+                        <div class="off-canvas-social">
+                            <a href="#" class="single-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="single-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="single-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="single-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - eBookStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+
+    <div class="site-wrapper" id="top">
+        @RenderBody()
+    </div>
+
+    <!--=================================
+    Footer Area
+    ===================================== -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright-heading">
+                    ebook.lk is a website for an extensive collection of local &
+                    International books.Not only a “one-stop shop” for book lovers but
+                    also an interactive and innovative destination designed to make it
+                    fun and exciting to discover and shop for new books online.book
+                    lovers but also an interactive and innovative destination designed
+                    to make it fun and exciting to discover and shop for new books.
+                </p>
+                <div class="brand-footer footer-title">
+                    <img src="~/image/logo--footer.png" alt="" />
+                </div>
+                <p class="copyright-text">
+                    Copyright © 2022 <a asp-area="" asp-controller="home" asp-action="index" class="author">Ebook.lk</a>. All Right
+                    Reserved.
+                    <br />
+                    Design and Developed By Subiharan & Kamal
+
+                </p>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Use Minified Plugins Version For Fast Page Load -->
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/ajax-mail.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/fontawesome-iconpicker/js/fontawesome-iconpicker.js"></script>
+    <script src="~/lib/font-awesome/js/all.js"></script>
+    <script src="~/lib/font-awesome/js/brands.js"></script>
+    <script src="~/lib/font-awesome/js/fontawesome.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

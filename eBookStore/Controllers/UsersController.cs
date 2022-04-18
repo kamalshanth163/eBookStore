@@ -46,6 +46,23 @@ namespace eBookStore.Controllers
             return View(user);
         }
 
+        public async Task<IActionResult> UserDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -61,7 +78,9 @@ namespace eBookStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string name, string pass)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Name == name && x.Pass == pass);
+            var user = _context.Users.FirstOrDefault(x => x.Name == name && x.Pass == pass && x.Role == "customer");
+
+            ViewData["Message"] = "";
 
             if (user != null)
             {
@@ -70,10 +89,7 @@ namespace eBookStore.Controllers
                 HttpContext.Session.SetString("UserId", user.Id.ToString());
                 HttpContext.Session.SetComplexData("CartItems", new List<CartItem>());
 
-                if (user.Role == "customer")
-                    return RedirectToAction("catalogue", "books");
-                else
-                    return RedirectToAction("Index", "books");
+                return RedirectToAction("catalogue", "books");
             }
             else
             {
@@ -82,24 +98,38 @@ namespace eBookStore.Controllers
             }
         }
 
-
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Role,Pass,Email")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Name,Pass,Email")] User user)
         {
+            user.Role = "customer";
             _context.Add(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Login));
         }
 
-        // GET: Users/Edit/5
+        // GET: Users/Edit
         public async Task<IActionResult> Edit()
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
             var user = await _context.Users.FindAsync(id);
+            return View(user);
+        }
+
+        public async Task<IActionResult> EditAdmin()
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var user = await _context.Users.FindAsync(id);
+            return View(user);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditUserByAdmin(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
             return View(user);
         }
 
@@ -163,6 +193,15 @@ namespace eBookStore.Controllers
             };
 
             return View(dashboard);
+        }
+
+
+        // GET: Users/Edit/5
+        public async Task<IActionResult> EditUserbyAdmin()
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var user = await _context.Users.FindAsync(id);
+            return View(user);
         }
     }
 }
