@@ -15432,6 +15432,10 @@ input[type="number"] {
   .rating-block span.star_on {
     color: #eccd00; }
 
+  .spk {
+      margin-left:20px;
+  }
+
 /*++ Method Cards ++*/
 .method-card {
   text-align: center; }

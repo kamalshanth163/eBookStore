@@ -77,13 +77,21 @@
 
                     <div class="add-to-cart-row">
 
-                            <div class="add-cart-btn">
-                                <a asp-controller="orders" asp-action="Create" asp-route-id="@Model.Id">
-                                    <div class="btn btn-outlined--primary">
-                                        Buy This Book
-                                    </div>
-                                </a>
-                            </div>
+                        <div class="add-cart-btn">
+                            <a asp-controller="orders" asp-action="Create" asp-route-id="@Model.Id">
+                                <div class="btn btn-outlined--primary">
+                                    Buy This Book
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="add-cart-btn spk">
+                            <a asp-controller="Books" asp-action="Feedbacks" asp-route-bookId="@Model.Id" asp-route-userId=0>
+                                <div class="btn btn-outlined--primary">
+                                    Add Feedback
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
